@@ -1,0 +1,12 @@
+{% extends "rider/base.html" %}
+{% block content %}
+    {% if user.profile.car_type and user.profile.license and user.profile.max_pass %}
+        <h1>You are qualified as a driver!</h1>
+        <a href="{% url 'rider-driver_filter' %}">Show appropriate open requests</a>
+    {% else %}
+        <h1>You are not qualified as a driver...</h1>
+        <!--<h1>{{user.profile.car_type}}</h1>-->
+        <!--<h1>{{user.profile.license}}</h1>-->
+        <!--<h1>{{user.profile.max_pass}}</h1>-->
+    {% endif %}
+{% endblock content %}

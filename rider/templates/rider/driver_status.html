@@ -1,0 +1,19 @@
+{% extends "rider/base.html" %}
+{% block content %}
+    <article class="media content-section">
+        <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ object.owner }}</a>
+              <small class="text-muted">{{ object.arrival|date:"m/d/Y, h:i a" }}</small>
+                {% if object.status == 'open' %}
+                <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'rider-driver-confirm' object.id %}">Confirm</a>
+                {% elif object.status == 'confirmed' %}
+                <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'rider-driver-complete' object.id %}">Complete</a>
+                {% endif %}
+            </div>
+            <h2 class="article-title">{{ object.address }}</h2>
+            <p class="article-content">{{ object.num_pass }}</p>
+            <p class="article-content">{{ object.CanShare }}</p>
+        </div>
+    </article>
+{% endblock content %}
